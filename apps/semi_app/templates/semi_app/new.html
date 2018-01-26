@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}    
+    <link rel="stylesheet" href="{% static 'semi_app/style.css' %}" media="screen" title="no title"  charset="utf-8">
+    <link rel="stylesheet" href="{% static 'semi_app/normalize.css' %}" media="screen" title="no title"  charset="utf-8">
+    <link rel="stylesheet" href="{% static 'semi_app/skeleton.css' %}" media="screen" title="no title"  charset="utf-8">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Add a new User</h2>
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{message.message}}</p>
+        {% endfor %}
+    {% endif %}
+    <form action='/semi_app/create' method='post' id="create">
+        {% csrf_token %}
+        First Name: <input type='text' name='first_name'>
+        Last Name: <input type="text" name='last_name'>
+        Email: <input type="text" name="email">
+
+        <input type='submit' value='create user'>
+    </form>
+</body>
+</html>
